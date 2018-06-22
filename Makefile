@@ -1,5 +1,5 @@
 
-RELEASE = ascii
+RELEASE = jessie
 
 PROJECT = devuan
 
