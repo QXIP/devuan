@@ -1,2 +1,2 @@
 # devuan
-Devuan Docker Base Image
+Devuan GNU/Linux base docker image
