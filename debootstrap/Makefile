@@ -7,13 +7,13 @@ clean:
 
 DSDIR=$(DESTDIR)/usr/share/debootstrap
 install:
-	mkdir -p $(DSDIR)/scripts
-	mkdir -p $(DESTDIR)/usr/sbin
+	sudo mkdir -p $(DSDIR)/scripts
+	sudo mkdir -p $(DESTDIR)/usr/sbin
 
 	sudo cp scripts/ceres $(DSDIR)/scripts/
 	sudo cp scripts/ascii $(DSDIR)/scripts/
-	install -o root -g root -m 0644 functions $(DSDIR)/
+	sudo install -o root -g root -m 0644 functions $(DSDIR)/
 
-	sed 's/@VERSION@/$(VERSION)/g' debootstrap >$(DESTDIR)/usr/sbin/debootstrap
-	chown root:root $(DESTDIR)/usr/sbin/debootstrap
-	chmod 0755 $(DESTDIR)/usr/sbin/debootstrap
+	sudo sed 's/@VERSION@/$(VERSION)/g' debootstrap >$(DESTDIR)/usr/sbin/debootstrap
+	sudo chown root:root $(DESTDIR)/usr/sbin/debootstrap
+	sudo chmod 0755 $(DESTDIR)/usr/sbin/debootstrap
