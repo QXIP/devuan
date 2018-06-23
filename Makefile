@@ -14,7 +14,7 @@ TARGETDIR = debootstrap/devuan
 all: debootstrap/devuan image
 
 debootstrap/devuan:
-	cd debootstrap && sudo ./debootstrap --no-check-gpg --arch amd64 $(RELEASE) devuan/ https://packages.devuan.org/merged/
+	cd debootstrap && make && sudo ./debootstrap --no-check-gpg --arch amd64 $(RELEASE) devuan/ https://packages.devuan.org/merged/
 
 image:
 	sudo chroot $(TARGETDIR) apt-get clean
