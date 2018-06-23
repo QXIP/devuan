@@ -11,14 +11,18 @@ LATEST = $(REPO)/$(PROJECT):latest
 
 TARGETDIR = debootstrap/devuan
 
-all: debootstrap/devuan image
+all: preinstall debootstrap/devuan image
+
+preinstall:
+	sudo apt-get install -y debootstrap
 
 debootstrap/devuan:
-	cd debootstrap && make && sudo ./debootstrap --no-check-gpg --arch amd64 $(RELEASE) devuan/ https://packages.devuan.org/merged/
+	cd debootstrap && make install && sudo ./debootstrap --no-check-gpg --arch amd64 $(RELEASE) devuan/ https://packages.devuan.org/merged/
 
 image:
 	sudo chroot $(TARGETDIR) apt-get clean
 	cd debootstrap && sudo tar -C devuan -c . | docker import - $(CONTAINER)
+	docker images | grep devuan | grep $(RELEASE)
 
 push:
 	docker push $(CONTAINER)
