@@ -11,3 +11,6 @@ Devuan GNU/Linux base docker image
 FROM qxip/devuan:ascii
 ENTRYPOINT ["/bin/bash"]  
 ```
+
+
+##### Based on Flawless
