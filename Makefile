@@ -14,10 +14,10 @@ TARGETDIR = debootstrap/devuan
 all: preinstall debootstrap/devuan image
 
 preinstall:
-	sudo apt-get install -y debootstrap
+	sudo apt-get install -y debootstrap dirmngr
 
 debootstrap/devuan:
-	cd debootstrap && make install && sudo ./debootstrap --no-check-gpg --arch amd64 $(RELEASE) devuan/ https://packages.devuan.org/merged/
+	cd debootstrap && make install && sudo ./debootstrap --variant=minbase --components=main,contrib --include=dirmngr,apt-transport-https --no-check-gpg --arch amd64 $(RELEASE) devuan/ https://packages.devuan.org/merged/
 
 image:
 	sudo chroot $(TARGETDIR) apt-get clean
