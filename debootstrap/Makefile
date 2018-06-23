@@ -10,8 +10,8 @@ install:
 	mkdir -p $(DSDIR)/scripts
 	mkdir -p $(DESTDIR)/usr/sbin
 
-	cp -a scripts/ceres $(DSDIR)/scripts/
-	cp -a scripts/ascii $(DSDIR)/scripts/
+	sudo cp scripts/ceres $(DSDIR)/scripts/
+	sudo cp scripts/ascii $(DSDIR)/scripts/
 	install -o root -g root -m 0644 functions $(DSDIR)/
 
 	sed 's/@VERSION@/$(VERSION)/g' debootstrap >$(DESTDIR)/usr/sbin/debootstrap
